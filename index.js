@@ -57,41 +57,6 @@ app.get('/login', (req, res) => {
     res.send(message) //message is sent to user to let them know if they are welcomed or not  
 })
 
-//allows admins to add users 
-app.get('/add-user', (req,res) => {
-    //create connection object 
-    let conn = newConnect();
-    conn.connect();
-
-    console.log(req.query.T1);
-    conn.query(`insert into Users values ('${req.query.name}','${req.query.T1}','${req.query.T2}','${req.query.T3}','${req.query.T4}','${req.query.T5}','${req.query.T6}','${req.query.T7}','${req.query.T8}','${req.query.T9}','${req.query.T10}')`
-            ,(err,rows,fields) => {
-                res.redirect('/');   //redirect to root      
-            } );
-  
-    conn.end();
-})
-
-//allows admins to add and update times 
-app.get('/add-times', (req,res) => {
-    //create connection object 
-    let conn = newConnect();
-    conn.connect();
-    //
-    console.log(req.query.T1);
-    //
-    conn.query( `UPDATE Time SET  T1 = '${req.query.T1}', T2 = '${req.query.T2}', T3 = '${req.query.T3}', T4 = '${req.query.T4}', T5 = '${req.query.T5}', T6 = '${req.query.T6}', T7 = '${req.query.T7}', T8 = '${req.query.T8}', T9 = '${req.query.T9}', T10 = '${req.query.T10}'`
-            , (err,rows,fields) => {
-                if (err)
-                    console.log(err);
-                else
-                    console.log('row updated'); //show that row was updated
-                    res.redirect('/'); //redirect to root
-            });
-
-    conn.end();
-})
-
 app.use(express.static('static'))
 
 app.listen(800);
