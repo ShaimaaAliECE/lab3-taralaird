@@ -25,6 +25,22 @@ app.get('/admin', (req, res) => {
     res.sendFile('/static/admin.html', { root: __dirname })
 })
 
+app.post('/login', (req, res) => {
+     //get username and password 
+     let userName = req.body.usr; 
+     let password = req.body.pwd;
+     //automatic message for incorrect login 
+     let message = "Sorry, you are not an Admin. Access denied";
+  
+    //if admin logins they are welcomed and send to the admin view 
+    if (userName == 'admin' && password == 'password') {
+        message = "Welcome Admin";
+        res.sendFile('/static/admin.html', { root: __dirname })
+    }
+    res.send(message) //message is sent to user to let them know if they are welcomed or not  
+
+  })
+
 //login information for admin login  
 app.get('/login', (req, res) => {
     //get username and password 
@@ -78,5 +94,4 @@ app.get('/add-times', (req,res) => {
 
 app.use(express.static('static'))
 
-//app listens at port 80, specified in the project
-app.listen(80);
+app.listen(800);

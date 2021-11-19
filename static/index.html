@@ -9,8 +9,18 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1> Welcome to the Scheduler! </h1>
+        <h1> Welcome to the Scheduler </h1>
+
+        <form action = '/login' method='post'> 
+            username : <input name = 'usr' type = 'text'/>
+            <br/> 
+            password : <input name = 'pwd' type = 'text'/>
+            <br/>
+            <input type = 'submit'/>
+        </form>
+
         <a href='/guest'>GUEST SIGNIN</a>
+        <br/>
         <a href='/admin'>ADMIN SIGNIN</a>
     </body>
 </html>
