@@ -59,4 +59,4 @@ app.get('/login', (req, res) => {
 
 app.use(express.static('static'))
 
-app.listen(800);
+app.listen(80);
